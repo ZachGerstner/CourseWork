@@ -1,0 +1,35 @@
+26 Jan 2019
+===========
+-Removed initial instruction comment about filling in kernel.
++Created thread indx.
++inserted if statement to check for bounds.
+*Note that there is not a test image.
+*Not sure how to structure calculations.
+
+28 Jan 2019
+===========
+-Commented out the unsigned
+-removed unsigned
+-removed colorspot calculation reason not needed
++created new uchar4 variable color
++set equal to d_in[greyspot] coordinate
++changed final scale calculation for color.x/.y/.z
+*uchar4 is struct 
+*not sure if optimal or if it will even work...
+?Issue with makefile
+?No test file provided
+
+30 Jan 2019
+===========
++makefile issue resolved
++test files aquired and stored in mods directory.
++Compiled without error
++Troubleshoot printfs were added
+-Only calculates first few rows of pixels
+*printfs revealed issue with threads
+?cant get block/grid right
++changed block/grid and saw improvement but still not full image
+?experimented with block/grid and have gotten a lot of mem issues
+*asking for help after class
+
+
