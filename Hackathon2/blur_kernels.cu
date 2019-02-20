@@ -103,6 +103,8 @@ __global__ void gaussian_blur_seperable_row(unsigned char *d_in, unsigned char *
 
 __global__ void gaussian_blur_seperable_col(unsigned char *d_in, unsigned char *d_out, const int cols, float *d_filter, int fWidth)
 {
+	//Strided memory access 
+	__extern__ __shared__ d_s_col[][]
 	int x = blockDim.x * blockIdx.x + threadIdx.x;
 	if(x < cols)
 	{
@@ -112,8 +114,10 @@ __global__ void gaussian_blur_seperable_col(unsigned char *d_in, unsigned char *
 		{
 			if(current > -1 && current < cols)
 			{
-				pixVal += (float)d_in[j * cols + current] * d_filter[j];
+				pixVal += (float)d_s_col[j * cols + current] * d_filter[j];
+				
 			}
+		__syncthreads();
 		}
 		d_out[x * current] = (unsigned char)pixVal;
 	}
