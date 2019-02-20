@@ -20,4 +20,3 @@ gaussain.cu
 +Implemented unify uchar solution
 *Ran into issue with libraries...
 **Meeting with the David to troubleshoot*
-
